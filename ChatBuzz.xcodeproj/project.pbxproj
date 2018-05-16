@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		448B39A2038CC122E99399F3 /* Pods_ChatBuzz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3F8507D29D3CBC3F953561 /* Pods_ChatBuzz.framework */; };
 		C5C88A9120ABCDD700E96DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */; };
 		C5C88A9320ABCDD700E96DE7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */; };
 		C5C88A9620ABCDD700E96DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C88A9420ABCDD700E96DE7 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B031D944863B699EE31A7D4 /* Pods-ChatBuzz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBuzz.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatBuzz/Pods-ChatBuzz.release.xcconfig"; sourceTree = "<group>"; };
+		87F10F679633A5715013E305 /* Pods-ChatBuzz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBuzz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatBuzz/Pods-ChatBuzz.debug.xcconfig"; sourceTree = "<group>"; };
 		C5C88A8D20ABCDD700E96DE7 /* ChatBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		C5C88AA620ABF0FD00E96DE7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCell.swift; sourceTree = "<group>"; };
+		CB3F8507D29D3CBC3F953561 /* Pods_ChatBuzz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBuzz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448B39A2038CC122E99399F3 /* Pods_ChatBuzz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6968E7989D1869FD8CCE23C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87F10F679633A5715013E305 /* Pods-ChatBuzz.debug.xcconfig */,
+				7B031D944863B699EE31A7D4 /* Pods-ChatBuzz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C5C88A8420ABCDD700E96DE7 = {
 			isa = PBXGroup;
 			children = (
 				C5C88A8F20ABCDD700E96DE7 /* ChatBuzz */,
 				C5C88A8E20ABCDD700E96DE7 /* Products */,
+				6968E7989D1869FD8CCE23C6 /* Pods */,
+				D768AEB86985D2CD9D737F7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +127,14 @@
 			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
+		D768AEB86985D2CD9D737F7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB3F8507D29D3CBC3F953561 /* Pods_ChatBuzz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5C88A9F20ABCDE000E96DE7 /* Build configuration list for PBXNativeTarget "ChatBuzz" */;
 			buildPhases = (
+				1FC03C3EC70AFD4DC736FE64 /* [CP] Check Pods Manifest.lock */,
 				C5C88A8920ABCDD700E96DE7 /* Sources */,
 				C5C88A8A20ABCDD700E96DE7 /* Frameworks */,
 				C5C88A8B20ABCDD700E96DE7 /* Resources */,
+				D8D52C633ECDA2D6CE8581ED /* [CP] Embed Pods Frameworks */,
+				CE1D17A95B0F093B9F31EF3B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,6 +204,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FC03C3EC70AFD4DC736FE64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ChatBuzz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE1D17A95B0F093B9F31EF3B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChatBuzz/Pods-ChatBuzz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8D52C633ECDA2D6CE8581ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ChatBuzz/Pods-ChatBuzz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChatBuzz/Pods-ChatBuzz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C5C88A8920ABCDD700E96DE7 /* Sources */ = {
@@ -330,16 +421,14 @@
 		};
 		C5C88AA020ABCDE000E96DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F10F679633A5715013E305 /* Pods-ChatBuzz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -349,16 +438,14 @@
 		};
 		C5C88AA120ABCDE000E96DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B031D944863B699EE31A7D4 /* Pods-ChatBuzz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
