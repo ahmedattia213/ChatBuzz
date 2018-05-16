@@ -243,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.22660098522168"/>
         </scene>
-        <!--ChatBuzz-->
+        <!--ChatBuzz🐝-->
         <scene sceneID="mFy-AK-RZZ">
             <objects>
                 <viewController storyboardIdentifier="chatVC" id="Oqc-3p-F1B" customClass="ChatViewController" customModule="ChatBuzz" customModuleProvider="target" sceneMemberID="viewController">
@@ -291,7 +291,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="AfL-1B-UAU">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="AfL-1B-UAU">
                                         <rect key="frame" x="0.0" y="22" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AfL-1B-UAU" id="QLc-Zb-MvP">
@@ -314,7 +314,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="etU-vi-66e"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ChatBuzz" id="vxc-9r-UE7">
+                    <navigationItem key="navigationItem" title="ChatBuzz🐝" id="vxc-9r-UE7">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="ykJ-gi-Uu7">
                             <connections>
                                 <action selector="logOutPressed:" destination="Oqc-3p-F1B" id="Npx-4j-zjl"/>
