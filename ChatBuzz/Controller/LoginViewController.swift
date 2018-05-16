@@ -1,5 +1,5 @@
 //
-//  ChatViewController.swift
+//  loginViewController.swift
 //  ChatBuzz
 //
 //  Created by Ahmed Amr on 5/16/18.
@@ -8,8 +8,16 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class LoginViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

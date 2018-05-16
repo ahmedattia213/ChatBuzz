@@ -1,5 +1,5 @@
 //
-//  loginViewController.swift
+//  registerViewController.swift
 //  ChatBuzz
 //
 //  Created by Ahmed Amr on 5/16/18.
@@ -8,8 +8,17 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    @IBAction func registerButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

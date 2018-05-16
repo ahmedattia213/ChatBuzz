@@ -1,5 +1,5 @@
 //
-//  registerViewController.swift
+//  ChatViewController.swift
 //  ChatBuzz
 //
 //  Created by Ahmed Amr on 5/16/18.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class ChatViewController: UIViewController {
 
+    @IBOutlet weak var messageTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,12 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

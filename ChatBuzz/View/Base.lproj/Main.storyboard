@@ -118,6 +118,9 @@
                                         <integer key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="GZW-iN-Adw" eventType="touchUpInside" id="s4h-KB-XW9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,6 +147,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="7UK-Qz-rWe"/>
                     <connections>
+                        <outlet property="emailTextField" destination="EHP-5z-tGc" id="M4F-ae-MIz"/>
+                        <outlet property="passwordTextField" destination="SaJ-Ms-M6h" id="v5c-Ba-fnm"/>
                         <segue destination="Oqc-3p-F1B" kind="show" identifier="goToChat" id="D0M-oy-09s"/>
                     </connections>
                 </viewController>
@@ -189,6 +194,9 @@
                                         <integer key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="registerButtonPressed:" destination="Ptq-G0-wTY" eventType="touchUpInside" id="HWF-3U-I3H"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,6 +223,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="LTa-ef-iM0"/>
                     <connections>
+                        <outlet property="emailTextField" destination="hme-wi-4vY" id="BTQ-5Y-SZT"/>
+                        <outlet property="passwordTextField" destination="7lM-sP-CAy" id="OAF-Qy-avh"/>
                         <segue destination="Oqc-3p-F1B" kind="show" identifier="goToChat" id="hXu-F3-hpw"/>
                     </connections>
                 </viewController>
@@ -317,7 +327,7 @@
                     <navigationItem key="navigationItem" title="ChatBuzz🐝" id="vxc-9r-UE7">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="ykJ-gi-Uu7">
                             <connections>
-                                <action selector="logOutPressed:" destination="Oqc-3p-F1B" id="Npx-4j-zjl"/>
+                                <action selector="logoutButtonPressed:" destination="Oqc-3p-F1B" id="ZTY-A2-t1h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -325,6 +335,7 @@
                     <connections>
                         <outlet property="heightConstraint" destination="5zG-Ut-fOo" id="O7W-ge-OMB"/>
                         <outlet property="messageTableView" destination="ii0-Tq-aTb" id="QYC-gE-fNt"/>
+                        <outlet property="messageTextField" destination="2wd-aU-fiB" id="uDQ-ce-2u7"/>
                         <outlet property="messageTextfield" destination="2wd-aU-fiB" id="eP1-h8-wBx"/>
                         <outlet property="sendButton" destination="WDb-xX-4as" id="PCz-0V-ISc"/>
                     </connections>
@@ -339,6 +350,6 @@
         <image name="rocket" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hXu-F3-hpw"/>
+        <segue reference="D0M-oy-09s"/>
     </inferredMetricsTieBreakers>
 </document>

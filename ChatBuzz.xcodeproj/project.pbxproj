@@ -18,6 +18,7 @@
 		C5C88AA720ABF0FD00E96DE7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88AA620ABF0FD00E96DE7 /* ChatViewController.swift */; };
 		C5C88AAD20ABF24E00E96DE7 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */; };
 		C5C88AAE20ABF24E00E96DE7 /* CustomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */; };
+		C5C88AB120ACC49000E96DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5C88AB020ACC49000E96DE7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C5C88AA620ABF0FD00E96DE7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCell.swift; sourceTree = "<group>"; };
+		C5C88AB020ACC49000E96DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3F8507D29D3CBC3F953561 /* Pods_ChatBuzz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBuzz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,14 +84,10 @@
 			children = (
 				C5C88AAA20ABF16F00E96DE7 /* Model */,
 				C5C88AA920ABF16700E96DE7 /* View */,
-				C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */,
-				C5C88AA620ABF0FD00E96DE7 /* ChatViewController.swift */,
-				C5C88AA420ABECA400E96DE7 /* RegisterViewController.swift */,
-				C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */,
-				C5C88AA220ABEC8A00E96DE7 /* LoginViewController.swift */,
 				C5C88AA820ABF14300E96DE7 /* Controller */,
 				C5C88A9720ABCDE000E96DE7 /* Assets.xcassets */,
 				C5C88A9C20ABCDE000E96DE7 /* Info.plist */,
+				C5C88AB020ACC49000E96DE7 /* GoogleService-Info.plist */,
 			);
 			path = ChatBuzz;
 			sourceTree = "<group>";
@@ -97,6 +95,11 @@
 		C5C88AA820ABF14300E96DE7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */,
+				C5C88AA620ABF0FD00E96DE7 /* ChatViewController.swift */,
+				C5C88AA420ABECA400E96DE7 /* RegisterViewController.swift */,
+				C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */,
+				C5C88AA220ABEC8A00E96DE7 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				C5C88A9B20ABCDE000E96DE7 /* LaunchScreen.storyboard in Resources */,
 				C5C88AAD20ABF24E00E96DE7 /* MessageCell.xib in Resources */,
+				C5C88AB120ACC49000E96DE7 /* GoogleService-Info.plist in Resources */,
 				C5C88A9820ABCDE000E96DE7 /* Assets.xcassets in Resources */,
 				C5C88A9620ABCDD700E96DE7 /* Main.storyboard in Resources */,
 			);
@@ -428,7 +432,10 @@
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -445,7 +452,10 @@
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
