@@ -1,3 +1,3 @@
 ## ChatBuzz
-A chatting application in swift4 using Firebase.
-The project is still not completed.
+A chatting application in swift4 using Firebase.<br/>
+The project is still in progress.
