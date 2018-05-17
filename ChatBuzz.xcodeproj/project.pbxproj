@@ -107,7 +107,8 @@
 		C5C88AA920ABF16700E96DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C5C88AAF20ABF36A00E96DE7 /* Custom Cell */,
+				C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */,
+				C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */,
 				C5C88A9420ABCDD700E96DE7 /* Main.storyboard */,
 				C5C88A9920ABCDE000E96DE7 /* LaunchScreen.storyboard */,
 			);
@@ -119,15 +120,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C5C88AAF20ABF36A00E96DE7 /* Custom Cell */ = {
-			isa = PBXGroup;
-			children = (
-				C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */,
-				C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */,
-			);
-			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		D768AEB86985D2CD9D737F7A /* Frameworks */ = {

@@ -26,6 +26,7 @@ class ChatViewController: UIViewController {
     @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
     }
     
+ 
     @IBAction func sendButtonPressed(_ sender: UIButton) {
     }
     
