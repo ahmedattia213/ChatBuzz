@@ -14,15 +14,61 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        
+        SVProgressHUD.show(withStatus: "Logging in")
+        var flag = true
+        if emailTextField.text == "" {
+            flag = false
+            animateTextField(textField: emailTextField)
+            SVProgressHUD.dismiss()
+        }
+        if passwordTextField.text  == "" {
+            flag = false
+            animateTextField(textField: passwordTextField)
+            SVProgressHUD.dismiss()
+        }
+         if flag {
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
+                (user,error) in
+                if error != nil {
+                    if let errCode = AuthErrorCode(rawValue: (error?._code)!){
+                        switch errCode {
+                        case .invalidEmail:
+                            self.errorLabel.text = "Error: Email not found."
+                        case .wrongPassword:
+                            self.errorLabel.text = "Error: Incorrect password."
+                        case .userDisabled:
+                            self.errorLabel.text = "Error: sorry your account has been disabled."
+                        default:
+                            self.errorLabel.text = "Error: please check your internet connection."
+                        }
+                        SVProgressHUD.dismiss()
+                        self.errorLabel.isHidden = false
+                        self.animateLabel(label: self.errorLabel)
+                        
+                        
+                    }
+                    
+                    
+                } else {
+                    self.errorLabel.isHidden = true
+                    SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "done")
+                    SVProgressHUD.dismiss(withDelay: 0.4)
+                    self.performSegue(withIdentifier: "goToChat", sender: self)
+                }
+            }
+            
+            
+        }
+
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        errorLabel.isHidden = true
         // Do any additional setup after loading the view.
     }
 

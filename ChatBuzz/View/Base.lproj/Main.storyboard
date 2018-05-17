@@ -87,7 +87,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EHP-5z-tGc">
-                                <rect key="frame" x="54" y="88" width="212" height="30"/>
+                                <rect key="frame" x="54" y="132" width="212" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="rxJ-na-GIS"/>
                                 </constraints>
@@ -96,7 +96,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SaJ-Ms-M6h">
-                                <rect key="frame" x="54" y="126" width="212" height="30"/>
+                                <rect key="frame" x="54" y="170" width="212" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ujR-PR-A3r"/>
                                 </constraints>
@@ -105,7 +105,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHY-B7-CrO">
-                                <rect key="frame" x="95" y="164" width="129" height="38"/>
+                                <rect key="frame" x="95" y="208" width="129" height="38"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.55569087009803908" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="dzN-78-gzX"/>
@@ -155,6 +155,7 @@
                     <navigationItem key="navigationItem" title="Login" id="7UK-Qz-rWe"/>
                     <connections>
                         <outlet property="emailTextField" destination="EHP-5z-tGc" id="M4F-ae-MIz"/>
+                        <outlet property="errorLabel" destination="7MG-ZN-MOQ" id="CuQ-m1-jla"/>
                         <outlet property="passwordTextField" destination="SaJ-Ms-M6h" id="v5c-Ba-fnm"/>
                         <segue destination="Oqc-3p-F1B" kind="show" identifier="goToChat" id="D0M-oy-09s"/>
                     </connections>
@@ -176,19 +177,19 @@
                                 <color key="backgroundColor" red="0.062745098039215685" green="0.92558753319035936" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hme-wi-4vY">
-                                <rect key="frame" x="54" y="88" width="212" height="30"/>
+                                <rect key="frame" x="54" y="132" width="212" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7lM-sP-CAy">
-                                <rect key="frame" x="54" y="126" width="212" height="30"/>
+                                <rect key="frame" x="54" y="170" width="212" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zv-qL-y0W">
-                                <rect key="frame" x="95" y="164" width="129" height="38"/>
+                                <rect key="frame" x="95" y="208" width="129" height="38"/>
                                 <color key="backgroundColor" red="0.062745098039215685" green="0.41568627450980389" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="QRL-Du-Czp"/>
@@ -241,7 +242,6 @@
                         <outlet property="errorLabel" destination="w4R-MH-1pm" id="xqs-BO-Dfs"/>
                         <outlet property="passwordTextField" destination="7lM-sP-CAy" id="OAF-Qy-avh"/>
                         <segue destination="Oqc-3p-F1B" kind="show" identifier="goToChat" id="hXu-F3-hpw"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToWelcome" id="zdW-ej-oGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOl-gx-hvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -363,6 +363,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D0M-oy-09s"/>
-        <segue reference="zdW-ej-oGb"/>
     </inferredMetricsTieBreakers>
 </document>

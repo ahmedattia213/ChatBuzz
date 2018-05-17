@@ -40,30 +40,23 @@ class RegisterViewController: UIViewController {
                     switch errCode {
                     case .invalidEmail:
                         self.errorLabel.text = "Error: Invalid email format"
-                        self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
+                        
                     case.emailAlreadyInUse:
                         self.errorLabel.text = "Error: this email already registered"
-                        self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
+                       
                     case.weakPassword:
-                         self.errorLabel.text = "Error: please choose a password of at least 6 characters"
-                        self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
-                    case .operationNotAllowed:
-                        self.errorLabel.text = "Error: Operation Not allowed"
-                        self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
-                        print(error!)
+                         self.errorLabel.text = "Error: please choose a password of at least 6 characters" 
                     default:
                          self.errorLabel.text = "Error: please check your internet connection."
-                       self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
+                      
                     }
                     SVProgressHUD.dismiss()
+                    self.errorLabel.isHidden = false
+                    self.animateLabel(label: self.errorLabel)
                 }
               
             } else {
+                self.errorLabel.isHidden = true
                 SVProgressHUD.dismiss()
                 SVProgressHUD.showSuccess(withStatus: "Done")
                 SVProgressHUD.dismiss(withDelay: 0.4)
