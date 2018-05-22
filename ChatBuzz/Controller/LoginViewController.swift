@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                     self.errorLabel.isHidden = true
                     SVProgressHUD.dismiss()
                     SVProgressHUD.showSuccess(withStatus: "done")
-                    SVProgressHUD.dismiss(withDelay: 0.4)
+                    SVProgressHUD.dismiss(withDelay: 0.6)
                     self.performSegue(withIdentifier: "goToChat", sender: self)
                 }
             }
