@@ -359,7 +359,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="messageTableView" destination="ii0-Tq-aTb" id="Q6m-OW-jhW"/>
                         <outlet property="messageTextField" destination="2wd-aU-fiB" id="rRc-sR-3pC"/>
+                        <outlet property="sendButton" destination="WDb-xX-4as" id="gXn-Wn-pU2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oc3-dZ-RPG" sceneMemberID="firstResponder"/>
