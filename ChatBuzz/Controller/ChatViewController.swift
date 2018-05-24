@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDataSource , UITextFieldDelegate {
 
@@ -16,8 +17,8 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
-    let messageArray = ["First message", "Scond" , " blabla"]
-    
+    var messageArray : [Message] = [Message] ()
+    let intArray : [Int] = [Int] ()
    
     
     override func viewDidLoad() {
@@ -29,6 +30,8 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         messageTableView.addGestureRecognizer(tapGesture)
      messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         configureTableView()
+        retrieveMessages()
+         messageTableView.separatorStyle = .none
         // Do any additional setup after loading the view.
        
     }
@@ -66,7 +69,18 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
       // cell.messageBackground.transform = CGAffineTransform(translationX: (cell.frame.size.width - messageTableView.frame.size.width)/2 , y: 0)
-        cell.messageBody.text = messageArray[indexPath.row]
+      //  cell.messageBody.text = messageArray[indexPath.row]
+        cell.messageBody.text = messageArray[indexPath.row].messageBody
+        cell.senderUsername.text = messageArray[indexPath.row].sender
+        
+        if cell.senderUsername.text == Auth.auth().currentUser?.email as String? {
+            cell.avatarImageView.backgroundColor = UIColor.flatMint()
+            cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
+        } else {
+            cell.avatarImageView.backgroundColor = UIColor.flatWatermelon()
+            cell.messageBackground.backgroundColor = UIColor.flatGray()
+        }
+    
         return cell
     }
     
@@ -77,7 +91,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     func configureTableView() {
         messageTableView.rowHeight = UITableViewAutomaticDimension
         messageTableView.estimatedRowHeight = 120.0
-        
+       
     }
    
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -98,7 +112,28 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         messageTextField.endEditing(true)
     }
     
-    
+    func retrieveMessages(){
+        let messageDB = Database.database().reference().child("Messages")
+        messageDB.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
+            let text = snapshotValue["MessageBody"]!
+            let sender = snapshotValue["Sender"]!
+          let message = Message()
+            message.messageBody = text
+            message.sender = sender
+            
+//            let message = Message()
+//            if  let text = snapshotValue["MessageBody"] {
+//                message.messageBody = text
+//            }
+//            if let sender = snapshotValue["Sender"]{
+//                message.sender = sender
+//            }
+            self.messageArray.append(message)
+            self.configureTableView()
+            self.messageTableView.reloadData()
+        }
+    }
     /*
     // MARK: - Navigation
 
