@@ -4,11 +4,12 @@
 //
 //  Created by Ahmed Amr on 5/16/18.
 //  Copyright © 2018 Ahmed Amr. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
 import ChameleonFramework
+import SVProgressHUD
 
 class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDataSource , UITextFieldDelegate {
 
@@ -43,6 +44,17 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIBarButtonItem) {
+        SVProgressHUD.show(withStatus: "logging out")
+        do {
+        try Auth.auth().signOut()
+            navigationController?.popViewController(animated: true)
+            SVProgressHUD.show(UIImage(named: "sad")!, status: "Bye")
+            SVProgressHUD.dismiss(withDelay: 0.9)
+            
+        } catch
+        {
+            SVProgressHUD.showError(withStatus: "Error logging out")
+        }
     }
     
  
@@ -68,7 +80,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-      // cell.messageBackground.transform = CGAffineTransform(translationX: (cell.frame.size.width - messageTableView.frame.size.width)/2 , y: 0)
+      //
       //  cell.messageBody.text = messageArray[indexPath.row]
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
@@ -76,11 +88,17 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         if cell.senderUsername.text == Auth.auth().currentUser?.email as String? {
             cell.avatarImageView.backgroundColor = UIColor.flatMint()
             cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
+            cell.messageBackground.transform = CGAffineTransform(translationX: 0 , y: 0)
+            cell.avatarImageView.transform = CGAffineTransform(translationX: 0 , y: 0)
         } else {
             cell.avatarImageView.backgroundColor = UIColor.flatWatermelon()
             cell.messageBackground.backgroundColor = UIColor.flatGray()
+            cell.messageBackground.transform = CGAffineTransform(translationX: ((cell.avatarImageView.frame.width + cell.messageBody.frame.width) - cell.frame.size.width )/1.16 , y: 0)
+            cell.avatarImageView.transform = CGAffineTransform(translationX: ((cell.avatarImageView.frame.width + cell.messageBody.frame.width) - cell.frame.size.width )/1.16 , y: 0)
+            
         }
-    
+      //------------(-img-body-)
+        cell.updateConstraintsIfNeeded()
         return cell
     }
     
@@ -90,6 +108,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     
     func configureTableView() {
         messageTableView.rowHeight = UITableViewAutomaticDimension
+        
         messageTableView.estimatedRowHeight = 120.0
        
     }
@@ -121,14 +140,6 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
           let message = Message()
             message.messageBody = text
             message.sender = sender
-            
-//            let message = Message()
-//            if  let text = snapshotValue["MessageBody"] {
-//                message.messageBody = text
-//            }
-//            if let sender = snapshotValue["Sender"]{
-//                message.sender = sender
-//            }
             self.messageArray.append(message)
             self.configureTableView()
             self.messageTableView.reloadData()
