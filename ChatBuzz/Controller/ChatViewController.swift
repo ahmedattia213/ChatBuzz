@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDataSource , UITextFieldDelegate {
 
@@ -43,7 +44,22 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     
  
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-            
+            messageTextField.endEditing(true)
+        messageTextField.isEnabled = false
+        sendButton.isEnabled = false
+        let messagesDB = Database.database().reference().child("Messages")
+        let messageDict = ["Sender": Auth.auth().currentUser?.email , "MessageBody": messageTextField.text!]
+        messagesDB.childByAutoId().setValue(messageDict){
+            (error, reference) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    print("Message saved")
+                    self.messageTextField.isEnabled = true
+                    self.sendButton.isEnabled = true
+                    self.messageTextField.text = ""
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
