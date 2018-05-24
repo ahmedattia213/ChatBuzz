@@ -1,9 +1,9 @@
 //
-//  CustomMessageCell.swift
-//  Flash Chat
+//  ChatViewController.swift
+//  ChatBuzz
 //
-//  Created by Angela Yu on 30/08/2015.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
+//  Created by Ahmed Amr on 5/16/18.
+//  Copyright © 2018 Ahmed Amr. All rights reserved.
 //
 
 import UIKit
