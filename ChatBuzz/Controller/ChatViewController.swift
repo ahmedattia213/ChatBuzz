@@ -27,10 +27,12 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
      messageTableView.dataSource = self
      messageTextField.delegate = self
         
-        let backgroundImage = UIImage(named: "background")
-        let imageView = UIImageView(image: backgroundImage)
-        self.messageTableView.backgroundView = imageView
-        
+      
+        let imageView = UIImageView(image: UIImage(named: "background"))
+        imageView.contentMode = .scaleAspectFill
+        messageTableView.backgroundView = imageView
+
+       
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
@@ -120,6 +122,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         UIView.animate(withDuration: 0.3){
             self.heightConstraint.constant = 308
             self.view.layoutIfNeeded()
+
             
         }
     }
