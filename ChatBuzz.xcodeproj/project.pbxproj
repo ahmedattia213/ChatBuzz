@@ -63,6 +63,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C5050F7620B698D100AADB03 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */,
+				C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		C5C88A8420ABCDD700E96DE7 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +118,7 @@
 		C5C88AA920ABF16700E96DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C5C88AAB20ABF24E00E96DE7 /* MessageCell.xib */,
-				C5C88AAC20ABF24E00E96DE7 /* CustomMessageCell.swift */,
+				C5050F7620B698D100AADB03 /* CustomCell */,
 				C5C88A9420ABCDD700E96DE7 /* Main.storyboard */,
 				C5C88A9920ABCDE000E96DE7 /* LaunchScreen.storyboard */,
 			);

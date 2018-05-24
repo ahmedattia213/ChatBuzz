@@ -21,20 +21,26 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     var messageArray : [Message] = [Message] ()
     let intArray : [Int] = [Int] ()
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
      messageTableView.delegate = self
      messageTableView.dataSource = self
      messageTextField.delegate = self
+        
+        let backgroundImage = UIImage(named: "background")
+        let imageView = UIImageView(image: backgroundImage)
+        self.messageTableView.backgroundView = imageView
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
-     messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
+        
         configureTableView()
         retrieveMessages()
          messageTableView.separatorStyle = .none
+    
         // Do any additional setup after loading the view.
-       
+        
     }
 
     
@@ -49,7 +55,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         try Auth.auth().signOut()
             navigationController?.popViewController(animated: true)
             SVProgressHUD.show(UIImage(named: "sad")!, status: "Bye")
-            SVProgressHUD.dismiss(withDelay: 0.9)
+            SVProgressHUD.dismiss(withDelay: 0.8)
             
         } catch
         {
@@ -80,8 +86,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-      //
-      //  cell.messageBody.text = messageArray[indexPath.row]
+        cell.backgroundColor = .clear
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
         
@@ -97,8 +102,6 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
             cell.avatarImageView.transform = CGAffineTransform(translationX: ((cell.avatarImageView.frame.width + cell.messageBody.frame.width) - cell.frame.size.width )/1.16 , y: 0)
             
         }
-      //------------(-img-body-)
-        cell.updateConstraintsIfNeeded()
         return cell
     }
     
@@ -143,6 +146,14 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
             self.messageArray.append(message)
             self.configureTableView()
             self.messageTableView.reloadData()
+            self.scrollToBottom()
+        }
+    }
+    
+    func scrollToBottom(){
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.messageArray.count-1, section: 0)
+            self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     /*
