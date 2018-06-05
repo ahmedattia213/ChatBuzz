@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import ChameleonFramework
 import SVProgressHUD
+import AVFoundation
 
 class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDataSource , UITextFieldDelegate {
 
@@ -18,11 +19,17 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
+    var imagePassedOver : UIImage?
+    let  senderSound = try! AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "SenderSound", ofType: "wav")!))
+    let receiverSound = try! AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ReceiverSound", ofType: "wav")!))
+    
     var messageArray : [Message] = [Message] ()
+    var messageArray2 : [Message] = [Message] ()
     let intArray : [Int] = [Int] ()
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageArray2 = messageArray
      messageTableView.delegate = self
      messageTableView.dataSource = self
      messageTextField.delegate = self
@@ -81,6 +88,8 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
                     self.messageTextField.isEnabled = true
                     self.sendButton.isEnabled = true
                     self.messageTextField.text = ""
+                    self.senderSound.play()
+               
             }
         }
     }
@@ -93,6 +102,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         cell.senderUsername.text = messageArray[indexPath.row].sender
         
         if cell.senderUsername.text == Auth.auth().currentUser?.email as String? {
+            
             cell.avatarImageView.backgroundColor = UIColor.flatMint()
             cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
             cell.messageBackground.transform = CGAffineTransform(translationX: 0 , y: 0)
@@ -139,6 +149,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     }
     
     func retrieveMessages(){
+        
         let messageDB = Database.database().reference().child("Messages")
         messageDB.observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String,String>
@@ -147,6 +158,9 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
           let message = Message()
             message.messageBody = text
             message.sender = sender
+            if message.sender != "" && message.sender != Auth.auth().currentUser?.email as String?  {
+                self.receiverSound.play()
+            }
             self.messageArray.append(message)
             self.configureTableView()
             self.messageTableView.reloadData()

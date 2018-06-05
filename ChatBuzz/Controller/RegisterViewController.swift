@@ -10,12 +10,44 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
+, UINavigationControllerDelegate {
 
+    
+
+    @IBOutlet weak var profImage: UIButton!
+    
+    @IBOutlet weak var ay7aga: UIImageView!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+
     
+ 
+    
+
+    @IBAction func addProfImagePressed(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            profImage.setImage(editedImage, for: .normal)
+            dismiss(animated: true, completion: nil)
+        }
+      else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            profImage.setImage(originalImage, for: .normal)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         SVProgressHUD.show(withStatus: "please wait..")
@@ -74,6 +106,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          errorLabel.isHidden = true
+       
         // Do any additional setup after loading the view.
     }
 
@@ -104,16 +137,9 @@ class RegisterViewController: UIViewController {
         
         label.layer.add(animation, forKey: "position")
     }
+  
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
