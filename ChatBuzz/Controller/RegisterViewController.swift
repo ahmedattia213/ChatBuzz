@@ -55,13 +55,11 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
         var flag = true
         if emailTextField.text == "" {
             flag = false
-            animateTextField(textField: emailTextField)
-            SVProgressHUD.dismiss()
+            handleEmptyField(textfield: emailTextField)
         }
         if passwordTextField.text  == "" {
             flag = false
-        animateTextField(textField: passwordTextField)
-            SVProgressHUD.dismiss()
+            handleEmptyField(textfield: passwordTextField)
         }
         if flag {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!){
@@ -82,18 +80,11 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
                          self.errorLabel.text = "Error: please check your internet connection."
                       
                     }
-                    SVProgressHUD.dismiss()
-                    self.errorLabel.isHidden = false
-                    self.animateLabel(label: self.errorLabel)
+                    self.handleErrorForRegister()
                 }
               
             } else {
-                self.errorLabel.isHidden = true
-                SVProgressHUD.dismiss()
-                SVProgressHUD.showSuccess(withStatus: "Done")
-                SVProgressHUD.dismiss(withDelay: 0.6)
-                self.performSegue(withIdentifier: "goToChat", sender: self)
-                 
+                self.handleSuccessForRegister()
                 
               
             }
@@ -113,6 +104,22 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func handleErrorForRegister(){
+        SVProgressHUD.dismiss()
+        self.errorLabel.isHidden = false
+        self.animateLabel(label: self.errorLabel)
+    }
+    func handleSuccessForRegister(){
+        self.errorLabel.isHidden = true
+        SVProgressHUD.dismiss()
+        SVProgressHUD.showSuccess(withStatus: "Done")
+        SVProgressHUD.dismiss(withDelay: 0.6)
+        self.performSegue(withIdentifier: "goToChat", sender: self)
+    }
+    func handleEmptyField(textfield : UITextField){
+        animateTextField(textField: emailTextField)
+        SVProgressHUD.dismiss()
     }
     
     func animateTextField(textField : UITextField) {
