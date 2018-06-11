@@ -10,14 +10,11 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
-, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController {
 
     
 
-    @IBOutlet weak var profImage: UIButton!
     
-    @IBOutlet weak var ay7aga: UIImageView!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,27 +24,7 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
  
     
 
-    @IBAction func addProfImagePressed(_ sender: UIButton) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-        
-        
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            profImage.setImage(editedImage, for: .normal)
-            dismiss(animated: true, completion: nil)
-        }
-      else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            profImage.setImage(originalImage, for: .normal)
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+   
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         SVProgressHUD.show(withStatus: "please wait..")
