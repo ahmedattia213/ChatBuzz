@@ -11,9 +11,11 @@ import Firebase
 import SVProgressHUD
 
 class LoginViewController: UIViewController {
+   
+    
 
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
     
@@ -22,13 +24,11 @@ class LoginViewController: UIViewController {
         var flag = true
         if emailTextField.text == "" {
             flag = false
-            animateTextField(textField: emailTextField)
-            SVProgressHUD.dismiss()
+           handleEmptyField(textfield: emailTextField)
         }
         if passwordTextField.text  == "" {
             flag = false
-            animateTextField(textField: passwordTextField)
-            SVProgressHUD.dismiss()
+           handleEmptyField(textfield: passwordTextField)
         }
          if flag {
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!){
@@ -45,20 +45,12 @@ class LoginViewController: UIViewController {
                         default:
                             self.errorLabel.text = "Error: please check your internet connection."
                         }
-                        SVProgressHUD.dismiss()
-                        self.errorLabel.isHidden = false
-                        self.animateLabel(label: self.errorLabel)
-                        
-                        
+                       self.handleErrorForLogin()
                     }
                     
                     
                 } else {
-                    self.errorLabel.isHidden = true
-                    SVProgressHUD.dismiss()
-                    SVProgressHUD.showSuccess(withStatus: "done")
-                    SVProgressHUD.dismiss(withDelay: 0.6)
-                    self.performSegue(withIdentifier: "goToChat", sender: self)
+                   self.handleSuccessForLogin()
                 }
             }
             
@@ -66,6 +58,26 @@ class LoginViewController: UIViewController {
         }
 
     }
+    
+    func handleErrorForLogin(){
+        SVProgressHUD.dismiss()
+        self.errorLabel.isHidden = false
+        self.animateLabel(label: self.errorLabel)
+    }
+    
+    func handleSuccessForLogin(){
+        self.errorLabel.isHidden = true
+        SVProgressHUD.dismiss()
+        SVProgressHUD.showSuccess(withStatus: "done")
+        SVProgressHUD.dismiss(withDelay: 0.6)
+        self.performSegue(withIdentifier: "goToChat", sender: self)
+    }
+    
+    func handleEmptyField(textfield : UITextField){
+        animateTextField(textField: emailTextField)
+        SVProgressHUD.dismiss()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.isHidden = true

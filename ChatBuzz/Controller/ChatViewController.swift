@@ -12,6 +12,7 @@ import ChameleonFramework
 import SVProgressHUD
 import AVFoundation
 
+
 class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDataSource , UITextFieldDelegate {
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -29,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageArray2 = messageArray
+     messageArray2 = messageArray
      messageTableView.delegate = self
      messageTableView.dataSource = self
      messageTextField.delegate = self
@@ -65,6 +66,8 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
             navigationController?.popViewController(animated: true)
             SVProgressHUD.show(UIImage(named: "sad")!, status: "Bye")
             SVProgressHUD.dismiss(withDelay: 0.8)
+             let vc = LoginViewController()
+             vc.passwordTextField!.text = ""
             
         } catch
         {
@@ -104,10 +107,12 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         if cell.senderUsername.text == Auth.auth().currentUser?.email as String? {
             
             cell.avatarImageView.backgroundColor = UIColor.flatMint()
+            cell.avatarImageView.image = #imageLiteral(resourceName: "egg.png")
             cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
             cell.messageBackground.transform = CGAffineTransform(translationX: 0 , y: 0)
             cell.avatarImageView.transform = CGAffineTransform(translationX: 0 , y: 0)
         } else {
+            cell.avatarImageView.image = #imageLiteral(resourceName: "egg.png")
             cell.avatarImageView.backgroundColor = UIColor.flatWatermelon()
             cell.messageBackground.backgroundColor = UIColor.flatGray()
             cell.messageBackground.transform = CGAffineTransform(translationX: ((cell.avatarImageView.frame.width + cell.messageBody.frame.width) - cell.frame.size.width )/1.16 , y: 0)
@@ -123,7 +128,6 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
     
     func configureTableView() {
         messageTableView.rowHeight = UITableViewAutomaticDimension
-        
         messageTableView.estimatedRowHeight = 120.0
        
     }
@@ -132,8 +136,6 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
         UIView.animate(withDuration: 0.3){
             self.heightConstraint.constant = 308
             self.view.layoutIfNeeded()
-
-            
         }
     }
     
@@ -155,13 +157,14 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
             let snapshotValue = snapshot.value as! Dictionary<String,String>
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
-          let message = Message()
+            let message = Message()
             message.messageBody = text
             message.sender = sender
-            if message.sender != "" && message.sender != Auth.auth().currentUser?.email as String?  {
+            let messageArraySize = self.messageArray.count
+            self.messageArray.append(message)
+            if messageArraySize != self.messageArray.count && message.messageBody != "" && message.sender != "" && message.sender != Auth.auth().currentUser?.email as String?  {
                 self.receiverSound.play()
             }
-            self.messageArray.append(message)
             self.configureTableView()
             self.messageTableView.reloadData()
             self.scrollToBottom()

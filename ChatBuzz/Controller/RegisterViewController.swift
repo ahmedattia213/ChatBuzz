@@ -32,13 +32,11 @@ class RegisterViewController: UIViewController {
         var flag = true
         if emailTextField.text == "" {
             flag = false
-            animateTextField(textField: emailTextField)
-            SVProgressHUD.dismiss()
+            handleEmptyField(textfield: emailTextField)
         }
         if passwordTextField.text  == "" {
             flag = false
-        animateTextField(textField: passwordTextField)
-            SVProgressHUD.dismiss()
+            handleEmptyField(textfield: passwordTextField)
         }
         if flag {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!){
@@ -59,18 +57,11 @@ class RegisterViewController: UIViewController {
                          self.errorLabel.text = "Error: please check your internet connection."
                       
                     }
-                    SVProgressHUD.dismiss()
-                    self.errorLabel.isHidden = false
-                    self.animateLabel(label: self.errorLabel)
+                    self.handleErrorForRegister()
                 }
               
             } else {
-                self.errorLabel.isHidden = true
-                SVProgressHUD.dismiss()
-                SVProgressHUD.showSuccess(withStatus: "Done")
-                SVProgressHUD.dismiss(withDelay: 0.6)
-                self.performSegue(withIdentifier: "goToChat", sender: self)
-                 
+                self.handleSuccessForRegister()
                 
               
             }
@@ -91,6 +82,22 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func handleErrorForRegister(){
+        SVProgressHUD.dismiss()
+        self.errorLabel.isHidden = false
+        self.animateLabel(label: self.errorLabel)
+    }
+    func handleSuccessForRegister(){
+        self.errorLabel.isHidden = true
+        SVProgressHUD.dismiss()
+        SVProgressHUD.showSuccess(withStatus: "Done")
+        SVProgressHUD.dismiss(withDelay: 0.6)
+        self.performSegue(withIdentifier: "goToChat", sender: self)
+    }
+    func handleEmptyField(textfield : UITextField){
+        animateTextField(textField: emailTextField)
+        SVProgressHUD.dismiss()
+    }
     
     func animateTextField(textField : UITextField) {
         let animation = CABasicAnimation(keyPath: "position")
@@ -108,10 +115,8 @@ class RegisterViewController: UIViewController {
         animation.duration = 0.12
         animation.repeatCount = 1
         animation.autoreverses = true
-        
         animation.fromValue = NSValue(cgPoint: CGPoint(x: label.center.x + 25, y: label.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: label.center.x , y: label.center.y))
-        
         label.layer.add(animation, forKey: "position")
     }
   
