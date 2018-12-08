@@ -11,6 +11,7 @@
 		C5050F7520B661B800AADB03 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5050F7420B661B800AADB03 /* Message.swift */; };
 		C5050F7920B6C5CF00AADB03 /* SenderSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5050F7820B6C5CF00AADB03 /* SenderSound.wav */; };
 		C5050F7B20B6C67600AADB03 /* ReceiverSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5050F7A20B6C67600AADB03 /* ReceiverSound.wav */; };
+		C58655BD21BB439200D5BA9D /* UIhelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58655BC21BB439200D5BA9D /* UIhelper.swift */; };
 		C5C88A9120ABCDD700E96DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */; };
 		C5C88A9320ABCDD700E96DE7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */; };
 		C5C88A9620ABCDD700E96DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C88A9420ABCDD700E96DE7 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		C5050F7420B661B800AADB03 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C5050F7820B6C5CF00AADB03 /* SenderSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SenderSound.wav; sourceTree = "<group>"; };
 		C5050F7A20B6C67600AADB03 /* ReceiverSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ReceiverSound.wav; sourceTree = "<group>"; };
+		C58655BC21BB439200D5BA9D /* UIhelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIhelper.swift; sourceTree = "<group>"; };
 		C5C88A8D20ABCDD700E96DE7 /* ChatBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C88A9020ABCDD700E96DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C88A9220ABCDD700E96DE7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			path = sounds;
 			sourceTree = "<group>";
 		};
+		C58655BB21BB435E00D5BA9D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C58655BC21BB439200D5BA9D /* UIhelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C5C88A8420ABCDD700E96DE7 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		C5C88A8F20ABCDD700E96DE7 /* ChatBuzz */ = {
 			isa = PBXGroup;
 			children = (
+				C58655BB21BB435E00D5BA9D /* Helpers */,
 				C5050F7720B6C5BD00AADB03 /* sounds */,
 				C5C88AAA20ABF16F00E96DE7 /* Model */,
 				C5C88AA920ABF16700E96DE7 /* View */,
@@ -304,6 +315,7 @@
 				C5C88AA720ABF0FD00E96DE7 /* ChatViewController.swift in Sources */,
 				C5C88AA520ABECA400E96DE7 /* RegisterViewController.swift in Sources */,
 				C5050F7520B661B800AADB03 /* Message.swift in Sources */,
+				C58655BD21BB439200D5BA9D /* UIhelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +464,10 @@
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -469,7 +484,10 @@
 				DEVELOPMENT_TEAM = H2XQP39QVX;
 				INFOPLIST_FILE = ChatBuzz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ahmedattia.ChatBuzz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

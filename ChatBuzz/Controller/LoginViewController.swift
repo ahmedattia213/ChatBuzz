@@ -59,6 +59,7 @@ class LoginViewController: UIViewController {
 
     }
     
+    
     func handleErrorForLogin(){
         SVProgressHUD.dismiss()
         self.errorLabel.isHidden = false
@@ -81,9 +82,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.isHidden = true
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        self.emailTextField.endEditing(true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        passwordTextField.text = ""
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

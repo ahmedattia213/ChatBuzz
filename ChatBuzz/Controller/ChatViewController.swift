@@ -66,8 +66,7 @@ class ChatViewController: UIViewController, UITableViewDelegate , UITableViewDat
             navigationController?.popViewController(animated: true)
             SVProgressHUD.show(UIImage(named: "sad")!, status: "Bye")
             SVProgressHUD.dismiss(withDelay: 0.8)
-             let vc = LoginViewController()
-             vc.passwordTextField!.text = ""
+             
             
         } catch
         {

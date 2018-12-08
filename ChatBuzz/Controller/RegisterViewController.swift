@@ -73,15 +73,24 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
          errorLabel.isHidden = true
        
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        self.emailTextField.endEditing(true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func handleErrorForRegister(){
         SVProgressHUD.dismiss()
         self.errorLabel.isHidden = false
@@ -121,7 +130,7 @@ class RegisterViewController: UIViewController {
     }
   
     
-
+ 
   
 
 }
